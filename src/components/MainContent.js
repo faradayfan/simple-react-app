@@ -11,9 +11,8 @@ export default class MainContent extends React.Component {
     render() {
         return (
             <div>
-                main content
+                {this.props.pageContent}
             </div>
-
         )
     }
 
