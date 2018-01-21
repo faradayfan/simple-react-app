@@ -1,31 +1,16 @@
 import React from 'react';
 
 
-
 export default class NavBar extends React.Component {
-    state = {
-        navLinks: [
-            {
-                key: 'home',
-                label: 'Home'
-            },
-            {
-                key: 'profile',
-                label: 'Profile'
-            },
-            {
-                key: 'about',
-                label: 'About'
-            }
-        ]
-    }
 
     renderLinks() {
-        return this.state.navLinks.map((l => this.renderLink(l)));
+        return this.props.navLinks.map((link) => this.renderLink(link));
     }
 
     renderLink(link) {
-        return <NavLink key={link.key} label={link.label} />
+        return (<NavLink key={link.key} label={link.label} onClick={() => {
+            this.props.pageChange(link.key);
+        }} />)
     }
     render() {
         return (
@@ -47,7 +32,7 @@ export class NavLink extends React.Component {
         return (
             <ul className="navbar-nav">
                 <li className="nav-item active">
-                    <a className="nav-link" href="">{this.props.label}</a>
+                    <a className="nav-link" active={this.props.active} onClick={event => this.props.onClick()} >{this.props.label}</a>
                 </li>
             </ul>
         );

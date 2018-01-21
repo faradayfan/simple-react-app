@@ -6,7 +6,7 @@ export default class Header extends React.Component {
 
     render() {
         return (
-            <NavBar />
+            <NavBar navLinks={this.props.navLinks} pageChange={this.props.pageChange} />
         );
     }
 }
